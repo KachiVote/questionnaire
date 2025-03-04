@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: dev  # 默认激活开发环境
+
+---
+# 公共配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 15
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/**/*.xml
+
+---
+
+
+---
+# 测试环境配置
+#spring:
+#  config:
+#    activate:
+#      on-profile: test
+#  datasource:
+#    url: jdbc:mysql://test-db:3306/test_db?useSSL=false&characterEncoding=utf8
+#    username: test_user
+#    password: test_pass
+#  security:
+#    user:
+#      name: test_admin
+#      password: test123
